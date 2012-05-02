@@ -1,0 +1,21 @@
+<!DOCTYPE html> 
+ 
+<html> 
+  <head> 
+    <script type="text/javascript" src="jquery/jquery.min.js"></script> 
+    <script type="text/javascript" src="jquery/jquery.cookie.js"></script> 
+    <script type="text/javascript" src="jquery/jquery.tree.js"></script> 
+    <script type="text/javascript"> 
+      $(document).ready(function() {
+        $('#wrapper').load('versions.html', function() {
+	   $('ul.rest3d').tree();});
+      });
+    </script> 
+    <title>jQuery tree plugin</title> 
+  </head> 
+ 
+  <body> 
+    <div id='wrapper'> 
+    </div>
+  </body>
+</html>

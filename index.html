@@ -1,0 +1,36 @@
+<html>
+	<head> 
+		<title>rest3d sandbox </title>
+		<script src="jquery/jquery.min.js"></script>
+		<script>
+		function search(ext) {
+			var query = $('#q').val();
+			var url = "0/search."+ext+'?q='+query;
+			window.location.href = url; 
+	       		return false;	};
+		</script>
+	</head>
+	<body>
+		<h1> rest3D API demo server (screampoint.com) </h1>
+		<p> Please refer to <a href="rest3d.org"> rest3d.org </a> on how to use this service </p>
+		<h3> /versions: </h2>
+		<ul>
+			<li> <a href="versions.xml" > version.xml </a>
+			<li> <a href="0/versions.json" > 0/version.json </a>
+			<li> <a href="versions.json?jsonp=callback" > version.json?jsonp=callback </a>
+			<li> <a href="1/versions.html" > 1/namespace/version.html </a>
+			<li> <a href="wrapper.html" > wrapper.html </a>
+		</ul>
+		<h3> /0/search: </h2>
+		<p> Note: the server simulate a search by doing a http query to Google Warehouse, 3dvia, and ourbricks. 
+		Then the server interprets the html pages and format into a {xml,json,html} result.
+		Therefore this prototype implementation is way slower than it would be if the servers would have rest3D direct access.</p>
+		<ul>
+			<li> Search string: <input type="text" id="q" name="q" /></li>
+			<li> <a href="javascript:search('xml');"> 0/search.xml?q=... </a></li>
+			<li> <a href="javascript:search('html');"> 0/search.html?q=... </a></li>
+			<li> <a href="javascript:search('json');"> 0/search.json?q=... </a></li>
+		</ul>
+	</body>
+>
+</html>
