@@ -1,5 +1,7 @@
 declare option exist:serialize "method=xhtml media-type=text/html indent=yes";
 
+let $title := "Upload Test"
+
 return
 <form enctype="multipart/form-data" method="post" action="upload.xql">
     <fieldset>
@@ -31,7 +33,7 @@ return
 		<legend>Description: </legend>
 		<input type="text" name="description"/>
 		<br />
-		<input type="radio" name="api_format" value="male" /> xml
+		<input type="radio" name="api_format" value="xml" /> xml
 		<br />
 		<input type="radio" name="api_format" value="json" /> json
 		<br />

@@ -1,6 +1,7 @@
 xquery version "1.0";
 
 import module namespace rest3d = "http://rest3d.org" at "rest3d.xqm";
+import module namespace find_attrib = "http://example.com/get_attrib" at "get_attrib.xqm";
 import module namespace xdb="http://exist-db.org/xquery/xmldb";
 import module namespace response="http://exist-db.org/xquery/response";
 
@@ -43,7 +44,8 @@ else
 	(
 		let $file := request:get-uploaded-file-data('model')
 		let $hash := util:hash($file,$hash-alg)
-		return if (fn:doc-available(fn:concat($collection-model,'/',$hash,'.dae')))
+		let $uri := concat($collection-model,'/', $hash, '.dae')
+		return if (fn:doc-available(fn:concat($collection-xml,'/',$hash,'.xml')))
 		then
 		(
 			<error>
@@ -67,6 +69,7 @@ else
 				<model>
 					<id>{$hash}</id>
 					<filename>{$filename}</filename>
+					<created>{current-time()}</created>
 					{for $item in $supported
 					let $filtered := replace(xs:string(request:get-parameter($item,"")), "[^0-9a-zA-ZäöüßÄÖÜ\-,. ]", "")
 					return
@@ -90,6 +93,7 @@ else
 							)
 							else()
 					}
+					{find_attrib:find-attributes($uri)}
 				</model>
 			)
 		)
